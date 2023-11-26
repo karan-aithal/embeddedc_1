@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief The implementation file of the c1m1 assignment
  *
- * <Add Extended Description Here>
+ * This file includes all the required functions implementations in the c1m1 assignment
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Karan Aithal
+ * @date 27/11/2023
  *
  */
 
@@ -36,8 +36,22 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  unsigned char minimum = 0;
+  unsigned char maximum = 0;
+  float mean = 0;
+  unsigned char median = 0;
 
+  /* Statistics and Printing Functions Go Here */
+  printf("Array before sorting: \n");
+  print_array(&test, SIZE);
+  median = find_median(&test, SIZE);
+  mean = find_mean(&test, SIZE);
+  maximum = find_maximum(&test, SIZE);
+  minimum = find_minimum(&test, SIZE);
+  print_statistics(minimum, maximum, mean, median);
+  sort_array(&test, SIZE);
+  printf("Array after sorting: \n");
+  print_array(&test, SIZE);
 }
 
 /* Add other Implementation File Code Here */
