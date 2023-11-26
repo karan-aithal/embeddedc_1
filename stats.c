@@ -55,3 +55,79 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+
+void print_statistics (unsigned char minimum, unsigned char maximum, float mean, unsigned char median){
+  printf("The minimum is %d \n", minimum);
+  printf("The maximum is %d \n", maximum);
+  printf("The mean is %f \n", mean);
+  printf("The median is %d \n", median);
+}
+
+void print_array (unsigned char *array, unsigned int counter){
+  for (int i=0; i<counter; i++){
+    printf("%d,", *(array + i));
+  }
+  printf("\n");
+}
+
+unsigned char find_median (unsigned char *array, unsigned int counter){
+  unsigned char median = 0;
+  median = *(array + (counter / 2) -1);
+  return median;
+}
+
+float find_mean (unsigned char *array, unsigned int counter){
+  unsigned int accumulator = 0; // variable to store the accumulator value throughout the mean finding process
+  float mean = 0;
+  for (int i=0; i<counter; i++){
+    accumulator = accumulator + array[i] /* *(array + i) */;
+  }
+  printf("acc = %d \n", accumulator);
+  mean = accumulator / ((float) counter);
+  return mean;
+}
+
+unsigned char find_maximum (unsigned char *array, unsigned int counter){
+  unsigned char maximum = *array; 
+  for (int i=1; i<counter; i++){ // start the loop from the second elemnt
+    if (*(array + i) > maximum){
+      maximum = *(array + i);
+    }
+    else {} // do nothing.
+  }
+  return maximum;
+}
+
+unsigned char find_minimum (unsigned char *array, unsigned int counter){
+  unsigned char minimum = *array; 
+  for (int i=1; i<counter; i++){ 
+    if (*(array + i) < minimum){
+      minimum = *(array + i);
+    }
+    else {} // do nothing.
+  }
+  return minimum;
+}
+
+void sort_array (unsigned char *array, unsigned int counter){
+  char flag = 0; 
+  unsigned char temp;
+  do {
+    flag =0; 
+    for (int index=0; index<counter; index++){
+      if (array[index] > array[index +1] || array[index] == array[index +1]) {
+        continue;
+      }
+      else if (array[index] < array[index +1]) {
+        //swap elements//
+        temp = array[index];
+        array[index] = array[index+1];
+        array[index+1] = temp;
+
+        flag = 1; 
+      }
+    }
+  }
+  while (flag ==1);
+}
+
